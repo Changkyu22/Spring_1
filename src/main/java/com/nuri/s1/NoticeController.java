@@ -32,7 +32,7 @@ public class NoticeController {
 	}
 	
 	// Write GET
-	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET, params = {num=1,name=iu, age})
+	@RequestMapping(value = "noticeWrite")
 	public String noticeWrite() {
 		
 		return "notice/noticeWrite";
