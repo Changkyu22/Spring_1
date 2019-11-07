@@ -2,6 +2,7 @@ package com.nuri.s1;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,17 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nuri.s1.notice.noticeDTO;
-import com.nuri.s1.notice.noticeService;
+import com.nuri.notice.noticeDTO;
+import com.nuri.notice.noticeService;
 
 @Controller
 @RequestMapping("/notice/**")
 public class NoticeController {
+	
+	@Inject
 	private noticeService noticeService;
 	
-	public NoticeController() {
-		noticeService = new noticeService();
-	}
 	
 	// Write POST
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
@@ -32,7 +32,7 @@ public class NoticeController {
 	}
 	
 	// Write GET
-	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET, params = {num=1,name=iu, age})
+	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public String noticeWrite() {
 		
 		return "notice/noticeWrite";

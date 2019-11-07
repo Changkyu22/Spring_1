@@ -1,4 +1,4 @@
-package com.nuri.s1.notice;
+package com.nuri.notice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,14 +6,22 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nuri.s1.member.memberDTO;
-import com.nuri.util.DBConnector;
+import javax.inject.Inject;
+import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
+import com.nuri.s1.member.memberDTO;
+
+@Repository
 public class noticeDAO {
+	
+	@Inject
+	private DataSource dataSource;
 	
 	public int noticeUpdate()throws Exception{
 		int result = 0;
-		Connection con = DBConnector.getConnect();
+		Connection con = dataSource.getConnection();
 		
 		String sql = "update notice title=?, contents=? where num=?";
 		
@@ -22,7 +30,7 @@ public class noticeDAO {
 	
 	public noticeDTO noticeSelect(int num)throws Exception {
 		noticeDTO noticeDTO = null;
-		Connection con = DBConnector.getConnect();
+		Connection con = dataSource.getConnection();
 		
 		String sql = "select * from notice where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -51,7 +59,7 @@ public class noticeDAO {
 
 	public List<noticeDTO> noticeList() throws Exception {
 		ArrayList<noticeDTO> ar = new ArrayList<noticeDTO>();
-		Connection con = DBConnector.getConnect();
+		Connection con = dataSource.getConnection();
 		
 		String sql = "select * from notice order by num desc";
 		

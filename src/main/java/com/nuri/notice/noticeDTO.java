@@ -1,4 +1,4 @@
-package com.nuri.s1.notice;
+package com.nuri.notice;
 
 import java.sql.Date;
 

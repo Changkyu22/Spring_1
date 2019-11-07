@@ -1,13 +1,17 @@
-package com.nuri.s1.notice;
+package com.nuri.notice;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+@Service
 public class noticeService {
+	
+	@Inject
 	private noticeDAO noticeDAO;
 	
-	public noticeService() {
-		this.noticeDAO = new noticeDAO();
-	}
 	
 	public List<noticeDTO> noticeList() throws Exception {
 		List<noticeDTO> ar = noticeDAO.noticeList();
