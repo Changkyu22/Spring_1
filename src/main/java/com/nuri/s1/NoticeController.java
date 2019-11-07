@@ -2,6 +2,7 @@ package com.nuri.s1;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,11 +19,11 @@ import com.nuri.s1.notice.noticeService;
 @Controller
 @RequestMapping("/notice/**")
 public class NoticeController {
+	
+	@Inject
 	private noticeService noticeService;
 	
-	public NoticeController() {
-		noticeService = new noticeService();
-	}
+
 	
 	// Write POST
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
@@ -32,7 +33,7 @@ public class NoticeController {
 	}
 	
 	// Write GET
-	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET, params = {num=1,name=iu, age})
+	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public String noticeWrite() {
 		
 		return "notice/noticeWrite";

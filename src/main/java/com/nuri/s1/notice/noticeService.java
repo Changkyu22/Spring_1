@@ -6,7 +6,7 @@ public class noticeService {
 	private noticeDAO noticeDAO;
 	
 	public noticeService() {
-		this.noticeDAO = new noticeDAO();
+		this.noticeDAO=noticeDAO;
 	}
 	
 	public List<noticeDTO> noticeList() throws Exception {
@@ -15,6 +15,10 @@ public class noticeService {
 		return ar;
 	}
 	
+	public void setNoticeDAO(noticeDAO noticeDAO) {
+		this.noticeDAO = noticeDAO;
+	}
+
 	public noticeDTO noticeSelect(int num) throws Exception{
 		noticeDTO noticeDTO = new noticeDTO();
 		noticeDTO = noticeDAO.noticeSelect(num);
