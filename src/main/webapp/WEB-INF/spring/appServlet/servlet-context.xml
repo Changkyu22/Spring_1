@@ -22,7 +22,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.nuri.s1" />
-	<context:component-scan base-package="com.nuri.notice" />
+	<context:component-scan base-package="com.nuri.notice" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
 	
 	
 	
